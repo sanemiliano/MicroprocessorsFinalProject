@@ -95,7 +95,7 @@ int main(void)
 		}
 		OCR1A = grados;
 		recepcion = (char)255; // Restablecemos la entrada
-		_delay_ms(200);
+		 _delay_ms(200);
 	}
 
 }
