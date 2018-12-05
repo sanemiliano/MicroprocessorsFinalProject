@@ -1,0 +1,305 @@
+
+ProyectoFinalMicrosChido.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         0000018c  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000078  00800060  0000018c  00000200  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .comment      00000030  00000000  00000000  00000278  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000002a8  2**2
+                  CONTENTS, READONLY
+  4 .debug_aranges 000000a0  00000000  00000000  000002e4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   00000f05  00000000  00000000  00000384  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 00000801  00000000  00000000  00001289  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   00000636  00000000  00000000  00001a8a  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000178  00000000  00000000  000020c0  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    0000057f  00000000  00000000  00002238  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    00000802  00000000  00000000  000027b7  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 000000a8  00000000  00000000  00002fb9  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   8:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  10:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  14:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  18:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  1c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  20:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  24:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  28:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  2c:	0c 94 49 00 	jmp	0x92	; 0x92 <__vector_11>
+  30:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  34:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  38:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  3c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  40:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  44:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  48:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  4c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  50:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d4 e0       	ldi	r29, 0x04	; 4
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_copy_data>:
+  60:	10 e0       	ldi	r17, 0x00	; 0
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	ec e8       	ldi	r30, 0x8C	; 140
+  68:	f1 e0       	ldi	r31, 0x01	; 1
+  6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
+  6c:	05 90       	lpm	r0, Z+
+  6e:	0d 92       	st	X+, r0
+  70:	a8 3d       	cpi	r26, 0xD8	; 216
+  72:	b1 07       	cpc	r27, r17
+  74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
+
+00000076 <__do_clear_bss>:
+  76:	20 e0       	ldi	r18, 0x00	; 0
+  78:	a8 ed       	ldi	r26, 0xD8	; 216
+  7a:	b0 e0       	ldi	r27, 0x00	; 0
+  7c:	01 c0       	rjmp	.+2      	; 0x80 <.do_clear_bss_start>
+
+0000007e <.do_clear_bss_loop>:
+  7e:	1d 92       	st	X+, r1
+
+00000080 <.do_clear_bss_start>:
+  80:	a8 3d       	cpi	r26, 0xD8	; 216
+  82:	b2 07       	cpc	r27, r18
+  84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
+  86:	0e 94 70 00 	call	0xe0	; 0xe0 <main>
+  8a:	0c 94 c4 00 	jmp	0x188	; 0x188 <_exit>
+
+0000008e <__bad_interrupt>:
+  8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000092 <__vector_11>:
+	}
+
+}
+
+ISR(USART_RXC_vect)
+{
+  92:	1f 92       	push	r1
+  94:	0f 92       	push	r0
+  96:	0f b6       	in	r0, 0x3f	; 63
+  98:	0f 92       	push	r0
+  9a:	11 24       	eor	r1, r1
+  9c:	8f 93       	push	r24
+	recepcion =UDR;
+  9e:	8c b1       	in	r24, 0x0c	; 12
+  a0:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__data_start>
+}
+  a4:	8f 91       	pop	r24
+  a6:	0f 90       	pop	r0
+  a8:	0f be       	out	0x3f, r0	; 63
+  aa:	0f 90       	pop	r0
+  ac:	1f 90       	pop	r1
+  ae:	18 95       	reti
+
+000000b0 <_Z12imprimelineaPc>:
+
+void imprimelinea (char* dato)
+{
+  b0:	dc 01       	movw	r26, r24
+	for (uint8_t x = 0; x < strlen(dato) ;x++)
+  b2:	80 e0       	ldi	r24, 0x00	; 0
+  b4:	28 2f       	mov	r18, r24
+  b6:	30 e0       	ldi	r19, 0x00	; 0
+  b8:	fd 01       	movw	r30, r26
+  ba:	01 90       	ld	r0, Z+
+  bc:	00 20       	and	r0, r0
+  be:	e9 f7       	brne	.-6      	; 0xba <_Z12imprimelineaPc+0xa>
+  c0:	31 97       	sbiw	r30, 0x01	; 1
+  c2:	ea 1b       	sub	r30, r26
+  c4:	fb 0b       	sbc	r31, r27
+  c6:	2e 17       	cp	r18, r30
+  c8:	3f 07       	cpc	r19, r31
+  ca:	48 f4       	brcc	.+18     	; 0xde <_Z12imprimelineaPc+0x2e>
+	{
+		while( !( UCSRA & (1<<UDRE)) );
+  cc:	5d 9b       	sbis	0x0b, 5	; 11
+  ce:	fe cf       	rjmp	.-4      	; 0xcc <_Z12imprimelineaPc+0x1c>
+		UDR = dato[x];
+  d0:	fd 01       	movw	r30, r26
+  d2:	e2 0f       	add	r30, r18
+  d4:	f3 1f       	adc	r31, r19
+  d6:	90 81       	ld	r25, Z
+  d8:	9c b9       	out	0x0c, r25	; 12
+	recepcion =UDR;
+}
+
+void imprimelinea (char* dato)
+{
+	for (uint8_t x = 0; x < strlen(dato) ;x++)
+  da:	8f 5f       	subi	r24, 0xFF	; 255
+  dc:	eb cf       	rjmp	.-42     	; 0xb4 <_Z12imprimelineaPc+0x4>
+  de:	08 95       	ret
+
+000000e0 <main>:
+	//lcd_init(LCD_DISP_ON);
+	//lcd_home();
+	//char estado[16];
+
+	//Configuracion del motor
+	DDRC = 0b00000001;
+  e0:	81 e0       	ldi	r24, 0x01	; 1
+  e2:	84 bb       	out	0x14, r24	; 20
+	PORTC = 0b00000000;
+  e4:	15 ba       	out	0x15, r1	; 21
+	//DDRA = 0b00000000;
+	//ADMUX |= (0<<ADLAR) | (1<<REFS0) | (1<<REFS1);
+	//ADCSRA|=(1<<ADEN) | (1<<ADPS1) | (1<<ADPS0);
+	
+	//Configuracion del servo motor
+	TCCR1A |= (1<<COM1A1) | (1<<COM1B1) | (1<<WGM11); //set 0C1A/0C1B at bottom, non-inverting mode
+  e6:	8f b5       	in	r24, 0x2f	; 47
+  e8:	82 6a       	ori	r24, 0xA2	; 162
+  ea:	8f bd       	out	0x2f, r24	; 47
+	TCCR1B |= (1<<CS10) | (1<<WGM12) | (1<<WGM13);
+  ec:	8e b5       	in	r24, 0x2e	; 46
+  ee:	89 61       	ori	r24, 0x19	; 25
+  f0:	8e bd       	out	0x2e, r24	; 46
+	ICR1 = 180000;
+  f2:	80 e2       	ldi	r24, 0x20	; 32
+  f4:	9f eb       	ldi	r25, 0xBF	; 191
+  f6:	97 bd       	out	0x27, r25	; 39
+  f8:	86 bd       	out	0x26, r24	; 38
+	DDRD |= (1<<PD4) | (1<<PD5);
+  fa:	81 b3       	in	r24, 0x11	; 17
+  fc:	80 63       	ori	r24, 0x30	; 48
+  fe:	81 bb       	out	0x11, r24	; 17
+	int grados = 900;
+	
+	//Transmisicion por bluetooth
+	/* Set baud rate */
+	UBRRH = (uint8_t)((MYUBRR)>>8);
+ 100:	80 91 d7 00 	lds	r24, 0x00D7	; 0x8000d7 <MYUBRR+0x1>
+ 104:	80 bd       	out	0x20, r24	; 32
+	UBRRL = (uint8_t)MYUBRR;
+ 106:	80 91 d6 00 	lds	r24, 0x00D6	; 0x8000d6 <MYUBRR>
+ 10a:	89 b9       	out	0x09, r24	; 9
+	/* Enable receiver and transmitter */
+	UCSRB |=  (1<<RXCIE)|(1<<RXEN)|(1<<TXEN);/* Formato: 8 data, 1stop bit, PARIDAD DESACTIVADA */
+ 10c:	8a b1       	in	r24, 0x0a	; 10
+ 10e:	88 69       	ori	r24, 0x98	; 152
+ 110:	8a b9       	out	0x0a, r24	; 10
+	UCSRC = (1<<URSEL)|(1<<UCSZ1)|(1<<UCSZ0);
+ 112:	86 e8       	ldi	r24, 0x86	; 134
+ 114:	80 bd       	out	0x20, r24	; 32
+	sei();  //Actvar interrupciones
+ 116:	78 94       	sei
+
+	recepcion = (int)255;
+ 118:	8f ef       	ldi	r24, 0xFF	; 255
+ 11a:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__data_start>
+	while(recepcion != '1');
+ 11e:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__data_start>
+ 122:	81 33       	cpi	r24, 0x31	; 49
+ 124:	e1 f7       	brne	.-8      	; 0x11e <main+0x3e>
+	imprimelinea(linea1);
+ 126:	8f eb       	ldi	r24, 0xBF	; 191
+ 128:	90 e0       	ldi	r25, 0x00	; 0
+ 12a:	0e 94 58 00 	call	0xb0	; 0xb0 <_Z12imprimelineaPc>
+	imprimelinea(linea2);
+ 12e:	8f e8       	ldi	r24, 0x8F	; 143
+ 130:	90 e0       	ldi	r25, 0x00	; 0
+ 132:	0e 94 58 00 	call	0xb0	; 0xb0 <_Z12imprimelineaPc>
+	imprimelinea(linea3);
+ 136:	81 e6       	ldi	r24, 0x61	; 97
+ 138:	90 e0       	ldi	r25, 0x00	; 0
+ 13a:	0e 94 58 00 	call	0xb0	; 0xb0 <_Z12imprimelineaPc>
+	//Configuracion del servo motor
+	TCCR1A |= (1<<COM1A1) | (1<<COM1B1) | (1<<WGM11); //set 0C1A/0C1B at bottom, non-inverting mode
+	TCCR1B |= (1<<CS10) | (1<<WGM12) | (1<<WGM13);
+	ICR1 = 180000;
+	DDRD |= (1<<PD4) | (1<<PD5);
+	int grados = 900;
+ 13e:	84 e8       	ldi	r24, 0x84	; 132
+ 140:	93 e0       	ldi	r25, 0x03	; 3
+			if(grados >= 2000){
+				grados -= 100;
+			}
+		}
+		OCR1A = grados;
+		recepcion = (char)255; // Restablecemos la entrada
+ 142:	3f ef       	ldi	r19, 0xFF	; 255
+		//lcd_putc(' ');
+		//lcd_putc(' ');
+		//lcd_putc(' ');
+
+		//Lectura de instruccion blue
+		if(recepcion == '1'){
+ 144:	20 91 60 00 	lds	r18, 0x0060	; 0x800060 <__data_start>
+ 148:	21 33       	cpi	r18, 0x31	; 49
+ 14a:	31 f4       	brne	.+12     	; 0x158 <main+0x78>
+			if(grados < 4000)
+ 14c:	80 3a       	cpi	r24, 0xA0	; 160
+ 14e:	2f e0       	ldi	r18, 0x0F	; 15
+ 150:	92 07       	cpc	r25, r18
+ 152:	14 f4       	brge	.+4      	; 0x158 <main+0x78>
+			grados += 100;
+ 154:	8c 59       	subi	r24, 0x9C	; 156
+ 156:	9f 4f       	sbci	r25, 0xFF	; 255
+		}
+		if(recepcion == '2'){
+ 158:	20 91 60 00 	lds	r18, 0x0060	; 0x800060 <__data_start>
+ 15c:	22 33       	cpi	r18, 0x32	; 50
+ 15e:	31 f4       	brne	.+12     	; 0x16c <main+0x8c>
+			if(grados >= 2000){
+ 160:	80 3d       	cpi	r24, 0xD0	; 208
+ 162:	47 e0       	ldi	r20, 0x07	; 7
+ 164:	94 07       	cpc	r25, r20
+ 166:	14 f0       	brlt	.+4      	; 0x16c <main+0x8c>
+				grados -= 100;
+ 168:	84 56       	subi	r24, 0x64	; 100
+ 16a:	91 09       	sbc	r25, r1
+			}
+		}
+		OCR1A = grados;
+ 16c:	9b bd       	out	0x2b, r25	; 43
+ 16e:	8a bd       	out	0x2a, r24	; 42
+		recepcion = (char)255; // Restablecemos la entrada
+ 170:	30 93 60 00 	sts	0x0060, r19	; 0x800060 <__data_start>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 174:	5f e7       	ldi	r21, 0x7F	; 127
+ 176:	28 e3       	ldi	r18, 0x38	; 56
+ 178:	41 e0       	ldi	r20, 0x01	; 1
+ 17a:	51 50       	subi	r21, 0x01	; 1
+ 17c:	20 40       	sbci	r18, 0x00	; 0
+ 17e:	40 40       	sbci	r20, 0x00	; 0
+ 180:	e1 f7       	brne	.-8      	; 0x17a <main+0x9a>
+ 182:	00 c0       	rjmp	.+0      	; 0x184 <main+0xa4>
+ 184:	00 00       	nop
+ 186:	de cf       	rjmp	.-68     	; 0x144 <main+0x64>
+
+00000188 <_exit>:
+ 188:	f8 94       	cli
+
+0000018a <__stop_program>:
+ 18a:	ff cf       	rjmp	.-2      	; 0x18a <__stop_program>
