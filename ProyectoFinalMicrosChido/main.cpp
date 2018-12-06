@@ -26,16 +26,16 @@ int main(void)
 	//Configuracion del LCD
 	//lcd_init(LCD_DISP_ON);
 	//lcd_home();
-	//char estado[16];
+	char estado[16];
 
 	//Configuracion del motor
 	DDRC = 0b00000001;
 	PORTC = 0b00000000;
 
 	//Configuracion del termometro
-	//DDRA = 0b00000000;
-	//ADMUX |= (0<<ADLAR) | (1<<REFS0) | (1<<REFS1);
-	//ADCSRA|=(1<<ADEN) | (1<<ADPS1) | (1<<ADPS0);
+	DDRA = 0b00000000;
+	ADMUX |= (0<<ADLAR) | (1<<REFS0) | (1<<REFS1);
+	ADCSRA|=(1<<ADEN) | (1<<ADPS1) | (1<<ADPS0);
 	
 	//Configuracion del servo motor
 	TCCR1A |= (1<<COM1A1) | (1<<COM1B1) | (1<<WGM11); //set 0C1A/0C1B at bottom, non-inverting mode
@@ -61,18 +61,18 @@ int main(void)
 	while (1)
 	{
 		//Lectura del termometro
-		//ADCSRA|=(1<<ADSC);
-		//while( ADCSRA & (1<<ADSC) );
-		//int valor = ADCL+ (ADCH>>8);
-		//float c = float(valor) * 0.25;
-		//if(c>=32)
-		//{
-			//PORTC = 1;
-		//}
-		//else
-		//{
-			//PORTC = 0;
-		//}
+		ADCSRA|=(1<<ADSC);
+		while( ADCSRA & (1<<ADSC) );
+		int valor = ADCL+ (ADCH>>8);
+		float c = float(valor) * 0.25;
+		if(c>=25)
+		{
+			PORTC = 1;
+		}
+		else
+		{
+			PORTC = 0;
+		}
 		//sprintf(estado,"%f",(float)c);
 		//lcd_puts(estado);
 		//lcd_putc(' ');
@@ -87,6 +87,8 @@ int main(void)
 		if(recepcion == '1'){
 			if(grados < 4000)
 			grados += 100;
+			sprintf(estado,"%d avion",(int)c);
+			imprimelinea(estado);
 		}
 		if(recepcion == '2'){
 			if(grados >= 2000){
@@ -95,7 +97,7 @@ int main(void)
 		}
 		OCR1A = grados;
 		recepcion = (char)255; // Restablecemos la entrada
-		 _delay_ms(200);
+		_delay_ms(200);
 	}
 
 }
