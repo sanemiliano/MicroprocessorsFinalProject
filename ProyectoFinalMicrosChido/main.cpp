@@ -18,7 +18,7 @@ char linea1[] = "Ventilador prendido \n\r"; // \r para que funcione en proteus
 char linea2[] = "Envia un 1 si quieres moverlo a la izquierda \n\r"; // /n para que funcione en Terminal
 char linea3[] = "Envia un 2 si quieres moverlo a la derecha \n\r";
 char aux[] = "";
-void imprimelinea(char* dato);
+ void imprimelinea(char* dato);
 volatile char recepcion = (char)255; //volatile para que conserve los datos en main y en ISR
 
 int main(void)
